@@ -1,12 +1,56 @@
 package com.jd.matchagenttest.domains;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * Created by weijiang
  * Date: 2016/11/21
- * Desc: 请求代理商报文头
+ * Desc: 请求代理商报体
  */
 
-public class AgentRequestHead {
+
+@XmlRootElement(name="msg")
+public class AgentRequestContent {
+
+    private String v1 = "1.0";
+    private String id;
+
+    private RequestHead requestHead;
+
+    @XmlAttribute
+    public String getV1() {
+        return v1;
+    }
+
+    public void setV1(String v1) {
+        this.v1 = v1;
+    }
+
+    @XmlAttribute
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @XmlElement(name = "ctrl")
+    public RequestHead getRequestHead() {
+        return requestHead;
+    }
+
+    public void setRequestHead(RequestHead requestHead) {
+        this.requestHead = requestHead;
+    }
+
+}
+
+
+class RequestHead {
 
     private String agentId;
     private String cmd;
@@ -14,6 +58,8 @@ public class AgentRequestHead {
     private String md;
     private RequestBody requestBody;
 
+
+    @XmlElement(name="agentID")
     public String getAgentId() {
         return agentId;
     }
@@ -46,6 +92,7 @@ public class AgentRequestHead {
         this.md = md;
     }
 
+    @XmlElement(name = "body")
     public RequestBody getRequestBody() {
         return requestBody;
     }
@@ -54,7 +101,6 @@ public class AgentRequestHead {
         this.requestBody = requestBody;
     }
 }
-
 
 
 class RequestBody {
