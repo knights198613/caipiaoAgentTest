@@ -13,12 +13,15 @@ import javax.xml.bind.annotation.XmlType;
 
 
 @XmlRootElement(name="msg")
+@XmlType(propOrder = {"requestHead", "requestBody"})
 public class AgentRequestContent {
 
     private String v1 = "1.0";
     private String id;
 
     private RequestHead requestHead;
+
+    private RequestBody requestBody;
 
     @XmlAttribute
     public String getV1() {
@@ -47,6 +50,14 @@ public class AgentRequestContent {
         this.requestHead = requestHead;
     }
 
+    @XmlElement(name="body")
+    public RequestBody getRequestBody() {
+        return requestBody;
+    }
+
+    public void setRequestBody(RequestBody requestBody) {
+        this.requestBody = requestBody;
+    }
 }
 
 
@@ -56,7 +67,6 @@ class RequestHead {
     private String cmd;
     private String timeStamp;
     private String md;
-    private RequestBody requestBody;
 
 
     @XmlElement(name="agentID")
@@ -68,6 +78,7 @@ class RequestHead {
         this.agentId = agentId;
     }
 
+    @XmlElement(name="cmd")
     public String getCmd() {
         return cmd;
     }
@@ -76,6 +87,7 @@ class RequestHead {
         this.cmd = cmd;
     }
 
+    @XmlElement(name="timestamp")
     public String getTimeStamp() {
         return timeStamp;
     }
@@ -84,6 +96,7 @@ class RequestHead {
         this.timeStamp = timeStamp;
     }
 
+    @XmlElement(name="md")
     public String getMd() {
         return md;
     }
@@ -92,21 +105,28 @@ class RequestHead {
         this.md = md;
     }
 
-    @XmlElement(name = "body")
-    public RequestBody getRequestBody() {
-        return requestBody;
-    }
 
-    public void setRequestBody(RequestBody requestBody) {
-        this.requestBody = requestBody;
-    }
 }
 
 
 class RequestBody {
+    private Loto loto;
+
+    @XmlElement(name = "loto")
+    public Loto getLoto() {
+        return loto;
+    }
+
+    public void setLoto(Loto loto) {
+        this.loto = loto;
+    }
+}
+
+class Loto {
     private String lotoId;
     private String issue;
 
+    @XmlAttribute(name = "lotoid")
     public String getLotoId() {
         return lotoId;
     }
@@ -115,6 +135,7 @@ class RequestBody {
         this.lotoId = lotoId;
     }
 
+    @XmlAttribute(name = "issue")
     public String getIssue() {
         return issue;
     }
