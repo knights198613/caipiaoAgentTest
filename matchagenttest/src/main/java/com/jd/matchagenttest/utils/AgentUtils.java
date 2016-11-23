@@ -31,7 +31,6 @@ public class AgentUtils {
         httpClient.getHttpConnectionManager().getParams().setSoTimeout(SOCKET_WAIT_TIMEOUT);
         httpClient.getHttpConnectionManager().getParams().setReceiveBufferSize(SOCKET_RECEIVE_BUFFERSIZE);
 
-
         PostMethod postMethod = new PostMethod();
         postMethod.setPath(agentInfo.getAgentUrl());
         postMethod.getParams().setContentCharset(CHAR_ENCODING);

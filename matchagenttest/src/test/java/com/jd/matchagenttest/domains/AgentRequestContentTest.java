@@ -36,12 +36,13 @@ public class AgentRequestContentTest {
         agentRequestContent.setRequestHead(requestHead);
         agentRequestContent.setRequestBody(requestBody);
 
-        File file = new File("D:\\agentRequestContent.xml");
+        File file = new File("D:\\xml\\agentRequestContent.xml");
         try {
             JAXBContext context = JAXBContext.newInstance(AgentRequestContent.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
             marshaller.setProperty(Marshaller.JAXB_FRAGMENT, false);
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(agentRequestContent, file);
 
         } catch (JAXBException e) {
