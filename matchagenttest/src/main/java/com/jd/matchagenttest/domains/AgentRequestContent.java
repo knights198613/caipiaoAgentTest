@@ -60,7 +60,7 @@ public class AgentRequestContent {
     }
 
 
-
+    @XmlType(propOrder = {"agentId", "cmd", "timeStamp", "md"})
     public static class RequestHead {
 
         private String agentId;

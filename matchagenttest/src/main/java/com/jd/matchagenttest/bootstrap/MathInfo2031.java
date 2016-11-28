@@ -4,6 +4,7 @@ import com.jd.matchagenttest.commons.AgentRequestContent2Xml;
 import com.jd.matchagenttest.commons.PropertyPlaceholder;
 import com.jd.matchagenttest.datafactory.impl.AgentInfoFactory;
 import com.jd.matchagenttest.domains.AgentInfo;
+import com.jd.matchagenttest.utils.MD5Utils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -35,7 +36,10 @@ public class MathInfo2031 {
         String xmlStr = AgentRequestContent2Xml.reqeustContent2Xml(AGENT_FLAG, agentInfo, "");
         String md5Content = agentInfo.getAgentId()+agentInfo.getToken()+
                 xmlStr.substring(xmlStr.indexOf("<body>"), xmlStr.indexOf("</msg>"));
-        System.out.println(md5Content);
-        //xmlStr.replace()
+        String mdStr = MD5Utils.getMDHashStr(md5Content);
+
+        String[] xmlStrArray = xmlStr.split("\\#");
+
+        System.out.println(xmlStrArray[0]+mdStr+xmlStrArray[1]);
     }
 }

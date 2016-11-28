@@ -39,7 +39,7 @@ public class MD5Utils {
         char[] ss = new char[b.length * 2];
         for(int i=0; i<b.length; i++) {
             byte tmp = b[i];
-            ss[i] = HEX_ARRAY[tmp >>> 4 & 0xf];
+            ss[i] = HEX_ARRAY[tmp >> 4 & 0xf];
             ss[i] = HEX_ARRAY[tmp & 0xf];
         }
         return rs = new String(ss);
