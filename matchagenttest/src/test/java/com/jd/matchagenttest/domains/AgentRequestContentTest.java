@@ -17,14 +17,16 @@ public class AgentRequestContentTest {
 
     @Test
     public void testAgentRequestContent2Xml() {
-        Loto loto = new Loto();
+
+
+        AgentRequestContent.Loto loto = new AgentRequestContent.Loto();
         loto.setLotoId("301");
         loto.setIssue("");
 
-        RequestBody requestBody = new RequestBody();
+        AgentRequestContent.RequestBody requestBody = new AgentRequestContent.RequestBody();
         requestBody.setLoto(loto);
 
-        RequestHead requestHead = new RequestHead();
+        AgentRequestContent.RequestHead requestHead = new AgentRequestContent.RequestHead();
         requestHead.setAgentId("1021");
         requestHead.setCmd("2000");
         requestHead.setMd("sdfsdfsdfsdfsdfsd");

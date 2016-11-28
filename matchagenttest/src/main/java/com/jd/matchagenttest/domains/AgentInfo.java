@@ -16,7 +16,7 @@ public class AgentInfo {
     private String agentUrl;
     private String agentUrl2;
     private int agentType;    /**1:主代理商  0：备代理商**/
-    private int agent_priority;
+    private int agentPriority;
     private String userName;
     private String token;
     private Date timeStamp;
@@ -80,12 +80,12 @@ public class AgentInfo {
         this.agentType = agentType;
     }
 
-    public int getAgent_priority() {
-        return agent_priority;
+    public int getAgentPriority() {
+        return agentPriority;
     }
 
-    public void setAgent_priority(int agent_priority) {
-        this.agent_priority = agent_priority;
+    public void setAgentPriority(int agentPriority) {
+        this.agentPriority = agentPriority;
     }
 
     public String getUserName() {
@@ -129,5 +129,22 @@ public class AgentInfo {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "AgentInfo{" +
+                "id=" + id +
+                ", lotteryTypeId=" + lotteryTypeId +
+                ", agentId=" + agentId +
+                ", agentName='" + agentName + '\'' +
+                ", agentUrl='" + agentUrl + '\'' +
+                ", agentUrl2='" + agentUrl2 + '\'' +
+                ", agentType=" + agentType +
+                ", agentPriority=" + agentPriority +
+                ", userName='" + userName + '\'' +
+                ", token='" + token + '\'' +
+                ", timeStamp=" + timeStamp +
+                ", created=" + created +
+                ", yn=" + yn +
+                '}';
+    }
 }

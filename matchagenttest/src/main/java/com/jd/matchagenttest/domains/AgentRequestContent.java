@@ -58,89 +58,92 @@ public class AgentRequestContent {
     public void setRequestBody(RequestBody requestBody) {
         this.requestBody = requestBody;
     }
-}
 
 
-class RequestHead {
 
-    private String agentId;
-    private String cmd;
-    private String timeStamp;
-    private String md;
+    public static class RequestHead {
+
+        private String agentId;
+        private String cmd;
+        private String timeStamp;
+        private String md;
 
 
-    @XmlElement(name="agentID")
-    public String getAgentId() {
-        return agentId;
+        @XmlElement(name="agentID")
+        public String getAgentId() {
+            return agentId;
+        }
+
+        public void setAgentId(String agentId) {
+            this.agentId = agentId;
+        }
+
+        @XmlElement(name="cmd")
+        public String getCmd() {
+            return cmd;
+        }
+
+        public void setCmd(String cmd) {
+            this.cmd = cmd;
+        }
+
+        @XmlElement(name="timestamp")
+        public String getTimeStamp() {
+            return timeStamp;
+        }
+
+        public void setTimeStamp(String timeStamp) {
+            this.timeStamp = timeStamp;
+        }
+
+        @XmlElement(name="md")
+        public String getMd() {
+            return md;
+        }
+
+        public void setMd(String md) {
+            this.md = md;
+        }
+
+
     }
 
-    public void setAgentId(String agentId) {
-        this.agentId = agentId;
+
+    public static class RequestBody {
+        private Loto loto;
+
+        @XmlElement(name = "loto")
+        public Loto getLoto() {
+            return loto;
+        }
+
+        public void setLoto(Loto loto) {
+            this.loto = loto;
+        }
     }
 
-    @XmlElement(name="cmd")
-    public String getCmd() {
-        return cmd;
+    @XmlType(propOrder = {"lotoId", "issue"})
+    public static class Loto {
+        private String lotoId;
+        private String issue;
+
+        @XmlAttribute(name = "lotoid")
+        public String getLotoId() {
+            return lotoId;
+        }
+
+        public void setLotoId(String lotoId) {
+            this.lotoId = lotoId;
+        }
+
+        @XmlAttribute(name = "issue")
+        public String getIssue() {
+            return issue;
+        }
+
+        public void setIssue(String issue) {
+            this.issue = issue;
+        }
     }
 
-    public void setCmd(String cmd) {
-        this.cmd = cmd;
-    }
-
-    @XmlElement(name="timestamp")
-    public String getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-    @XmlElement(name="md")
-    public String getMd() {
-        return md;
-    }
-
-    public void setMd(String md) {
-        this.md = md;
-    }
-
-
-}
-
-
-class RequestBody {
-    private Loto loto;
-
-    @XmlElement(name = "loto")
-    public Loto getLoto() {
-        return loto;
-    }
-
-    public void setLoto(Loto loto) {
-        this.loto = loto;
-    }
-}
-
-class Loto {
-    private String lotoId;
-    private String issue;
-
-    @XmlAttribute(name = "lotoid")
-    public String getLotoId() {
-        return lotoId;
-    }
-
-    public void setLotoId(String lotoId) {
-        this.lotoId = lotoId;
-    }
-
-    @XmlAttribute(name = "issue")
-    public String getIssue() {
-        return issue;
-    }
-
-    public void setIssue(String issue) {
-        this.issue = issue;
-    }
 }

@@ -24,7 +24,7 @@ public class AgentUtils {
     private static final String CHAR_ENCODING = "UTF-8";
 
 
-    public ResponseResult requestAgent(AgentInfo agentInfo, String xmlStr) throws Exception {
+    public static ResponseResult requestAgent(AgentInfo agentInfo, String xmlStr) throws Exception {
 
         HttpClient httpClient = new HttpClient();
         httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(CONNECTION_TIMEOUT);

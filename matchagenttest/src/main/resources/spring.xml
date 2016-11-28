@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--<bean id="settings" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="fileEncoding" value="utf-8"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:properties/agentInfo.properties</value>
+            </list>
+        </property>
+    </bean>-->
+
+    <bean id="propertyPlaceholder" class="com.jd.matchagenttest.commons.PropertyPlaceholder">
+         <property name="fileEncoding" value="UTF-8"/>
+         <property name="locations">
+             <list>
+                 <value>classpath*:properties/agentInfo.properties</value>
+             </list>
+         </property>
+    </bean>
+
+    <bean id="agentInfoFactory" class="com.jd.matchagenttest.datafactory.impl.AgentInfoFactory"></bean>
+</beans>
