@@ -15,6 +15,8 @@ public class MD5UtilsTest {
     public void testGetMDHashStr() {
         String ss = "uoujouououousdfsdf";
         String rs = MD5Utils.getMDHashStr(ss);
+        String dd = MD5Utils.getMd5Str(ss);
         System.out.println(rs);
+        System.out.println(dd);
     }
 }
