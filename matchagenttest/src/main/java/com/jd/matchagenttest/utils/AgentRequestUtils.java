@@ -12,7 +12,7 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  * Date: 2016/11/21
  * Desc: 访问代理商接口的工具类
  */
-public class AgentUtils {
+public class AgentRequestUtils {
 
     /**等待建连的时间 2 分钟**/
     private static final int CONNECTION_TIMEOUT = 2 * 60 * 1000;
