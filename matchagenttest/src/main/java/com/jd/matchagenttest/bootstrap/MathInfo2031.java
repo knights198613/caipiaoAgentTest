@@ -40,19 +40,13 @@ public class MathInfo2031 {
         Properties prop = null;
         prop = placeholder.getProperties();
         AgentInfo agentInfo = (AgentInfo) factory.produceData(prop, AgentInfo.class);
-
         String xmlStr = AgentRequestContent2Xml.reqeustContent2Xml(AGENT_FLAG, agentInfo, "");
-
         String md5Content = agentInfo.getAgentId()+agentInfo.getToken()+
                 xmlStr.substring(xmlStr.indexOf("<body>"), xmlStr.indexOf("</msg>"));
-
         String mdStr = MD5Utils.getMDHashStr(md5Content);
-
         String[] xmlStrArray = xmlStr.split("\\#");
-
         String requestContent = xmlStrArray[0]+mdStr+xmlStrArray[1];
         logger.info("发送请求代理商内容为:"+requestContent);
-
         //请求代理商获取代理商返回消息体
         try {
             ResponseResult result = AgentRequestUtils.requestAgent(agentInfo, requestContent);
