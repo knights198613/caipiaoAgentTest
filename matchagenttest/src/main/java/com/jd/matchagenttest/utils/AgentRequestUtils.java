@@ -5,6 +5,8 @@ import com.jd.matchagenttest.domains.ResponseResult;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
+import org.apache.log4j.Logger;
+import org.apache.log4j.spi.LoggerFactory;
 
 
 /**
@@ -13,6 +15,8 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  * Desc: 访问代理商接口的工具类
  */
 public class AgentRequestUtils {
+
+    public final static Logger logger = Logger.getLogger(AgentRequestUtils.class);
 
     /**等待建连的时间 2 分钟**/
     private static final int CONNECTION_TIMEOUT = 2 * 60 * 1000;
@@ -40,7 +44,7 @@ public class AgentRequestUtils {
         httpClient.executeMethod(postMethod);
         String result = postMethod.getResponseBodyAsString();
 
-        System.out.println("请求返回的状态码为："+postMethod.getStatusCode()+ ", 请求返回的信息内容为："+result);
+        logger.info("请求返回的状态码为："+postMethod.getStatusCode()+ ", 请求返回的信息内容为："+result);
         ResponseResult responseResult = new ResponseResult();
         responseResult.setStatusCode(postMethod.getStatusCode());
         responseResult.setResultStr(result);

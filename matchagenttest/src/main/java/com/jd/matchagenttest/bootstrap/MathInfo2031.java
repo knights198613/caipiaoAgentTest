@@ -7,6 +7,7 @@ import com.jd.matchagenttest.domains.AgentInfo;
 import com.jd.matchagenttest.domains.ResponseResult;
 import com.jd.matchagenttest.utils.AgentRequestUtils;
 import com.jd.matchagenttest.utils.MD5Utils;
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,8 +19,11 @@ import java.util.Properties;
  * Desc: 2031接口启动类
  */
 public class MathInfo2031 {
+    Logger logger = Logger.getLogger(MathInfo2031.class);
+
     ApplicationContext applicationContext;
     final static String SPRING_CONF_XML_PATH = "classpath:spring.xml";
+    //代理商接口标示
     final static String AGENT_FLAG = "2031";
 
 
@@ -47,14 +51,14 @@ public class MathInfo2031 {
         String[] xmlStrArray = xmlStr.split("\\#");
 
         String requestContent = xmlStrArray[0]+mdStr+xmlStrArray[1];
-        System.out.println(requestContent);
+        logger.info("发送请求代理商内容为:"+requestContent);
 
         //请求代理商获取代理商返回消息体
         try {
             ResponseResult result = AgentRequestUtils.requestAgent(agentInfo, requestContent);
-            System.out.println("代理商返回结果：statusCode:"+result.getStatusCode()+"对阵信息："+result.getResultStr());
+            System.out.println("代理商返回结果:statusCode:"+result.getStatusCode()+",对阵信息："+result.getResultStr());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("请求代理商接口错误:" + e.getMessage());
         }
     }
 }
