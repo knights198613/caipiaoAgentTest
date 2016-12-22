@@ -47,6 +47,7 @@ public class MathInfo2031 {
         String[] xmlStrArray = xmlStr.split("\\#");
         String requestContent = xmlStrArray[0]+mdStr+xmlStrArray[1];
         logger.info("发送请求代理商内容为:"+requestContent);
+
         //请求代理商获取代理商返回消息体
         try {
             ResponseResult result = AgentRequestUtils.requestAgent(agentInfo, requestContent);
