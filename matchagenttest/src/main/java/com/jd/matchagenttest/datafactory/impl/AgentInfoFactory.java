@@ -25,21 +25,21 @@ public class AgentInfoFactory implements DataBeanFactory {
             Method[] methods = aClass.getDeclaredMethods();
             for (Method method : methods) {
                 String methodName = method.getName().toLowerCase();
+
                 if (methodName.substring(0, 3).equals("set")) {
+                    String parameterType = (method.getParameterTypes())[0].getName();
                     for (Object key : properties.keySet()) {
-                        Object val = properties.get(key);
-                        String k = (String) key;
-                        String ks = k.split("\\.")[1];
+                         Object val = properties.get(key);
+                         String k = (String) key;
+                         String ks = k.split("\\.")[1];
 
-                        if (methodName.contains(ks)) {
-                            if (ks.equals("id") || ks.equals("lotteryid") || ks.equals("agentid") || ks.equals("agenttype")
-                                    || ks.equals("agentpriority")) {
-                                method.invoke(object, Integer.valueOf((String) val));
-
-                            } else {
+                        if (methodName.substring(3).equals(ks)) {
+                            if(parameterType.equals("java.lang.String")) {
                                 method.invoke(object, val);
+                            }else if(parameterType.equals("java.lang.Integer") || parameterType.equals("int")) {
+                                method.invoke(object, Integer.valueOf((String) val));
                             }
-
+                            break;
                         }
                     }
 
@@ -53,12 +53,6 @@ public class AgentInfoFactory implements DataBeanFactory {
         }
         return null;
     }
-
-
-
-
-
-
 
 
 }
