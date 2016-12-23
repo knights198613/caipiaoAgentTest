@@ -11,8 +11,8 @@ import java.util.Date;
  */
 public class TimeUtils {
 
-    static Calendar calendar = Calendar.getInstance();
-    static SimpleDateFormat sp = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+    public static final Calendar calendar = Calendar.getInstance();
+    public static final SimpleDateFormat sp = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
     /**
      * 获取系统的当前日期的时间戳，精确到毫秒
