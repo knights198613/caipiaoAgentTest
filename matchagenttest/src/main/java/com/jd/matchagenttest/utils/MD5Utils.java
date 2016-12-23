@@ -62,7 +62,7 @@ public class MD5Utils {
         String result = null;
         //result = Hashing.md5().newHasher().putString(source, Charset.forName(CHAR_ENCODING)).hash().toString();
         try {
-            result = Hashing.md5().hashBytes(source.getBytes("UTF-8")).toString();
+            result = Hashing.md5().hashBytes(source.getBytes(CHAR_ENCODING)).toString();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
