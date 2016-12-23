@@ -22,7 +22,8 @@ import java.nio.charset.Charset;
  * Created by weijiang
  * Date: 2016/12/22
  * Desc: 采用新版本的httpClient构造代理商
- *       请求工具类
+ *       请求工具类，新版比老版本在多线程上
+ *       还是下了功夫优化了许多
  */
 public class AgentRequestNewUtils {
 
