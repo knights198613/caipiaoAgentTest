@@ -28,22 +28,26 @@ public class AgentRequestUtils {
     private static final String CHAR_ENCODING = "UTF-8";
 
 
-    public static ResponseResult requestAgent(AgentInfo agentInfo, String xmlStr) throws Exception {
-
+    public static ResponseResult requestAgent(AgentInfo agentInfo, String xmlStr) {
+        String result = null;
         HttpClient httpClient = new HttpClient();
         httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(CONNECTION_TIMEOUT);
         httpClient.getHttpConnectionManager().getParams().setSoTimeout(SOCKET_WAIT_TIMEOUT);
         httpClient.getHttpConnectionManager().getParams().setReceiveBufferSize(SOCKET_RECEIVE_BUFFERSIZE);
-
         PostMethod postMethod = new PostMethod();
         postMethod.setPath(agentInfo.getAgentUrl());
         postMethod.getParams().setContentCharset(CHAR_ENCODING);
         postMethod.setRequestHeader("Cache-Control", "no-cache");
         postMethod.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset="+CHAR_ENCODING);
-        postMethod.setRequestEntity(new StringRequestEntity(xmlStr, "text/xml; charset="+CHAR_ENCODING, CHAR_ENCODING));
-        httpClient.executeMethod(postMethod);
-        String result = postMethod.getResponseBodyAsString();
-
+        try {
+            postMethod.setRequestEntity(new StringRequestEntity(xmlStr, "text/xml; charset=" + CHAR_ENCODING, CHAR_ENCODING));
+            httpClient.executeMethod(postMethod);
+            result = postMethod.getResponseBodyAsString();
+        }catch (Exception e) {
+            logger.error("请求代理商接口出错,"+e.getMessage());
+        }finally {
+            postMethod.releaseConnection();
+        }
         logger.info("请求返回的状态码为："+postMethod.getStatusCode()+ ", 请求返回的信息内容为："+result);
         ResponseResult responseResult = new ResponseResult();
         responseResult.setStatusCode(postMethod.getStatusCode());

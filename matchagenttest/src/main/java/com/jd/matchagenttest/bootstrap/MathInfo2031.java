@@ -49,11 +49,8 @@ public class MathInfo2031 {
         logger.info("发送请求代理商内容为:"+requestContent);
 
         //请求代理商获取代理商返回消息体
-        try {
-            ResponseResult result = AgentRequestUtils.requestAgent(agentInfo, requestContent);
-            System.out.println("代理商返回结果:statusCode:"+result.getStatusCode()+",对阵信息："+result.getResultStr());
-        } catch (Exception e) {
-            logger.error("请求代理商接口错误:" + e.getMessage());
-        }
+        ResponseResult result = AgentRequestUtils.requestAgent(agentInfo, requestContent);
+        System.out.println("代理商返回结果:statusCode:"+result.getStatusCode()+",对阵信息："+result.getResultStr());
+
     }
 }
