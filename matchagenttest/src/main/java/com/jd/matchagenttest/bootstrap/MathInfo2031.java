@@ -5,6 +5,7 @@ import com.jd.matchagenttest.commons.PropertyPlaceholder;
 import com.jd.matchagenttest.datafactory.impl.AgentInfoFactory;
 import com.jd.matchagenttest.domains.AgentInfo;
 import com.jd.matchagenttest.domains.ResponseResult;
+import com.jd.matchagenttest.utils.AgentRequestNewUtils;
 import com.jd.matchagenttest.utils.AgentRequestUtils;
 import com.jd.matchagenttest.utils.MD5Utils;
 import org.apache.log4j.Logger;
@@ -49,7 +50,9 @@ public class MathInfo2031 {
         logger.info("发送请求代理商内容为:"+requestContent);
 
         //请求代理商获取代理商返回消息体
-        ResponseResult result = AgentRequestUtils.requestAgent(agentInfo, requestContent);
+        //ResponseResult result = AgentRequestUtils.requestAgent(agentInfo, requestContent);
+        //请求代理商接口返回消息体的新版httpClient工具类方法
+        ResponseResult result = AgentRequestNewUtils.requestAgent(agentInfo, requestContent);
         System.out.println("代理商返回结果:statusCode:"+result.getStatusCode()+",对阵信息："+result.getResultStr());
 
     }
