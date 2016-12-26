@@ -12,11 +12,20 @@ import java.io.StringWriter;
  */
 public class JAXBUtils {
 
+    public static final String DEFAULT_ENCODING = "utf-8";
+
+    /**
+     * Bean 2 xml 方法
+     * @param clazz
+     * @param encoding
+     * @param obj
+     * @return
+     */
     public static String convertBean2Xml(Class clazz, String encoding, Object obj) {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
             Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_ENCODING, encoding);
+            marshaller.setProperty(Marshaller.JAXB_ENCODING, encoding == null ? DEFAULT_ENCODING : encoding);
             marshaller.setProperty(Marshaller.JAXB_FRAGMENT, false);
             StringWriter stringWriter = new StringWriter();
             marshaller.marshal(obj, stringWriter);
